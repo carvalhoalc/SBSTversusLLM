@@ -1,0 +1,16 @@
+# Build directories
+target/
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# Maven
+dependency-reduced-pom.xml
