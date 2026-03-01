@@ -28,6 +28,28 @@
         <groupId>org.evosuite.plugins</groupId>
         <artifactId>evosuite-maven-plugin</artifactId>
         <version>${evosuite.version}</version>
+        <configuration>
+          <!-- generate tests targeting the Calculadora class and aim for branch coverage -->
+          <targetClasses>
+            <param>br.com.exemplo.Calculadora</param>
+          </targetClasses>
+          <criterion>BRANCH</criterion>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.8</version>
+        <executions>
+          <execution>
+            <goals><goal>prepare-agent</goal></goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals><goal>report</goal></goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.pitest</groupId>
@@ -36,6 +58,10 @@
         <configuration>
           <targetClasses><param>br.com.exemplo.*</param></targetClasses>
           <targetTests><param>br.com.exemplo.*</param></targetTests>
+          <!-- Forçar plugin de teste JUnit4 -->
+          <testPlugin>junit</testPlugin>
+          <!-- Usar 1 thread para estabilidade -->
+          <threads>1</threads>
         </configuration>
       </plugin>
     </plugins>
